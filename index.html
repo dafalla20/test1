@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>النظام الجامعي | موديول تسجيل الطلاب</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <h1>النظام الجامعي</h1>
+      <p>عرض مبدئي — موديول تسجيل الطلاب (قبل الباك‑إند وقاعدة البيانات)</p>
+    </header>
+
+    <main class="layout">
+      <aside class="modules">
+        <h2>الموديولات</h2>
+        <button class="module active">تسجيل الطلاب</button>
+        <button class="module" disabled>إدارة المقررات (لاحقاً)</button>
+        <button class="module" disabled>القبول والتسجيل (لاحقاً)</button>
+        <button class="module" disabled>الرسوم والمنح (لاحقاً)</button>
+      </aside>
+
+      <section class="content">
+        <nav class="tabs" role="tablist" aria-label="شاشات تسجيل الطلاب">
+          <button class="tab active" data-target="register" role="tab">تسجيل طالب جديد</button>
+          <button class="tab" data-target="search" role="tab">البحث عن طالب</button>
+        </nav>
+
+        <section id="register" class="panel active" role="tabpanel">
+          <h2>شاشة تسجيل طالب جديد</h2>
+          <form class="grid-form" onsubmit="event.preventDefault()">
+            <label>
+              الرقم الجامعي
+              <input type="text" placeholder="مثال: 202600123" required />
+            </label>
+            <label>
+              رقم الهوية/الإقامة
+              <input type="text" placeholder="أدخل رقم الهوية" required />
+            </label>
+            <label>
+              الاسم الأول
+              <input type="text" placeholder="الاسم الأول" required />
+            </label>
+            <label>
+              اسم العائلة
+              <input type="text" placeholder="اسم العائلة" required />
+            </label>
+            <label>
+              البريد الجامعي
+              <input type="email" placeholder="name@univ.edu" />
+            </label>
+            <label>
+              رقم الجوال
+              <input type="tel" placeholder="05xxxxxxxx" />
+            </label>
+            <label>
+              الكلية
+              <select>
+                <option>كلية الحاسب</option>
+                <option>كلية الهندسة</option>
+                <option>كلية الطب</option>
+              </select>
+            </label>
+            <label>
+              التخصص
+              <select>
+                <option>علوم الحاسب</option>
+                <option>نظم المعلومات</option>
+                <option>هندسة البرمجيات</option>
+              </select>
+            </label>
+            <label>
+              المستوى
+              <select>
+                <option>الأول</option>
+                <option>الثاني</option>
+                <option>الثالث</option>
+                <option>الرابع</option>
+              </select>
+            </label>
+            <label>
+              الحالة الأكاديمية
+              <select>
+                <option>مستجد</option>
+                <option>منتظم</option>
+                <option>محوّل</option>
+              </select>
+            </label>
+
+            <div class="actions">
+              <button type="submit" class="primary">حفظ (تجريبي)</button>
+              <button type="reset" class="ghost">إعادة تعيين</button>
+            </div>
+          </form>
+        </section>
+
+        <section id="search" class="panel" role="tabpanel">
+          <h2>شاشة البحث عن طالب</h2>
+          <div class="search-card">
+            <div class="search-row">
+              <input type="search" id="query" placeholder="ابحث بالرقم الجامعي، الاسم، الهوية..." />
+              <button id="searchBtn" class="primary">بحث</button>
+            </div>
+
+            <div class="filters">
+              <label>
+                الكلية
+                <select id="facultyFilter">
+                  <option value="all">الكل</option>
+                  <option value="حاسب">كلية الحاسب</option>
+                  <option value="هندسة">كلية الهندسة</option>
+                </select>
+              </label>
+              <label>
+                الحالة
+                <select id="statusFilter">
+                  <option value="all">الكل</option>
+                  <option value="منتظم">منتظم</option>
+                  <option value="مستجد">مستجد</option>
+                </select>
+              </label>
+            </div>
+
+            <table>
+              <thead>
+                <tr>
+                  <th>الرقم الجامعي</th>
+                  <th>الاسم</th>
+                  <th>الكلية</th>
+                  <th>التخصص</th>
+                  <th>الحالة</th>
+                </tr>
+              </thead>
+              <tbody id="resultsBody"></tbody>
+            </table>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
